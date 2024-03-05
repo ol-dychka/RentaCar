@@ -37,3 +37,11 @@ export interface FilterProps {
   limit: number;
   model: string;
 }
+
+export interface CustomFilterProps {
+  title: string;
+  options: Array<{
+    title: string;
+    value: string;
+  }>;
+}
