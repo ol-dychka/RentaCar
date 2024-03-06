@@ -45,3 +45,8 @@ export interface CustomFilterProps {
     value: string;
   }>;
 }
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isLastPage: boolean;
+}

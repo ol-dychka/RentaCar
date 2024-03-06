@@ -1,4 +1,4 @@
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fuels, manufacturers, yearsOfProduction } from "@/constants";
 import { fetchCars } from "@/utils";
 
@@ -44,12 +44,17 @@ export default async function Home({
           </div>
         </div>
         {!isDataEmpty ? (
-          <section>
+          <section id="cars">
             <div className="home__cars-wrapper">
               {allCars?.map((car, index) => (
                 <CarCard key={index} car={car} />
               ))}
             </div>
+
+            <ShowMore
+              pageNumber={(limit || 10) / 10}
+              isLastPage={(limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className="home__error-container">
