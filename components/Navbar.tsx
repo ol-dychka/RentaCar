@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CustomButton } from ".";
 import { useRouter } from "next/navigation";
+import GoogleSignIn from "./GoogleSignIn";
 
 const Navbar = () => {
   const router = useRouter();
@@ -21,11 +22,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <CustomButton
-          title="Sign In"
-          containerStyles="text-primary-blue rounded-full bg-white min-w-[130px]"
-          handleClick={() => router.push("/login")}
-        />
+        <GoogleSignIn />
       </nav>
     </header>
   );
