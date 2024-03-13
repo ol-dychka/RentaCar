@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Footer, Navbar } from "@/components";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Car Hub",
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="relative">
-        {/* <Navbar /> */}
-        {children}
-        <Footer />
+        <SessionProvider>
+          {/* <Navbar /> */}
+          {children}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

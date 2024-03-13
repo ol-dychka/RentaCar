@@ -9,14 +9,21 @@ const GoogleSignIn = () => {
 
   let authContent: React.ReactNode;
   if (session.status === "loading") {
-    authContent = null;
+    authContent = (
+      <CustomButton
+        btnType="submit"
+        title="Sign In"
+        containerStyles="text-gray-500 rounded-full bg-white min-w-[130px]"
+        isDisabled
+      />
+    );
   } else if (session.data?.user) {
     authContent = (
       <form action={googleSignOut}>
         <CustomButton
           btnType="submit"
           title={session.data.user.name || ""}
-          containerStyles="bg-primary-blue text-white rounded-full mt-10 w-full"
+          containerStyles="text-primary-blue rounded-full bg-white min-w-[130px]"
         />
       </form>
     );
@@ -26,7 +33,7 @@ const GoogleSignIn = () => {
         <CustomButton
           btnType="submit"
           title="Sign In"
-          containerStyles="bg-primary-blue text-white rounded-full mt-10 w-full"
+          containerStyles="text-primary-blue rounded-full bg-white min-w-[130px]"
         />
       </form>
     );

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { generateCarImageUrl } from "@/utils";
+import { CustomButton } from "..";
 
 export interface CarDetailsProps {
   isOpen: boolean;
@@ -40,7 +41,7 @@ const CarDetails = ({ isOpen, close, car }: CarDetailsProps) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white text-left shadow-xl transition-all flex flex-col gap-5">
+                <Dialog.Panel className="relative p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-xl bg-white text-left shadow-xl transition-all flex flex-col gap-5">
                   <button
                     type="button"
                     className="absolute top-2 right-2 z-10 w-fit p-2 bg-primary-blue-100 rounded-full"
@@ -111,12 +112,25 @@ const CarDetails = ({ isOpen, close, car }: CarDetailsProps) => {
                             {key.split("_").join(" ")}
                           </h4>
                           <p className="text-black-100 font-semibold">
-                            {value}
+                            {value
+                              .toString()
+                              .replace(/(?:^|\s|["'([{])+\S/g, (match: any) =>
+                                match.toUpperCase()
+                              )}
                           </p>
                         </div>
                       ))}
                     </div>
                   </div>
+
+                  <form>
+                    <CustomButton
+                      title="Rent"
+                      containerStyles="w-full py-[16px] rounded-full bg-primary-blue"
+                      textStyles="text-white text-[14px] leading-[17px] font-bold"
+                      btnType="submit"
+                    />
+                  </form>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
